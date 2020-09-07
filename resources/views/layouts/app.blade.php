@@ -15,7 +15,7 @@
     
     <a class="nav-link" href="{{ route('login') }}">Login</a>
              
-    <a href="/login">Logout</a>
+    <a href="/logout">Logout</a>
 
     <a href="/register">Register</a>
 

@@ -47,8 +47,12 @@ class AuthController extends Controller
       }
     
       public function logout() {
+        info(auth()->user());
+
         auth()->logout();
-        return redirect('/');
+
+        info('asdf logout');
+        return redirect('/login');
       }
     /**
      * Display a listing of the resource.
