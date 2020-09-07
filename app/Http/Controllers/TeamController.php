@@ -18,7 +18,7 @@ class TeamController extends Controller
         $teams = Team::all();
         
 
-        return view('teams', compact('teams'));
+        return view('teams/teams', compact('teams'));
     }
 
     /**
@@ -53,7 +53,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
         $players = $team->players;
     
-        return view('singleTeam', [
+        return view('teams/singleTeam', [
           'id' => $team->id,
           'name' => $team->name,
           'address' => $team->address,

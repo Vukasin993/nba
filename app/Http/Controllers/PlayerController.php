@@ -50,7 +50,7 @@ class PlayerController extends Controller
         $player = Player::findOrFail($id);
         
     
-        return view('singlePlayer', [
+        return view('teams/singlePlayer', [
           'id' => $player->id,
           'first_name' => $player->first_name,
           'last_name' => $player->last_name,

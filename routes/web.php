@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'TeamController@index');
+Route::get('/teams', 'TeamController@index');
 
-Route::get('/teams/{id}', 'TeamController@show')->name('singleTeam');
+Route::get('/teams/teams/{id}', 'TeamController@show')->name('singleTeam');
 
-ROute::get('/players/{id}', 'PlayerController@show')->name('singlePlayer');
+ROute::get('/teams/players/{id}', 'PlayerController@show')->name('singlePlayer');
+
+Route::get('/register', 'AuthController@getRegisterForm');
+Route::post('/register', 'AuthController@register');
+Route::get('/login', 'AuthController@getLoginForm')->name('login');
+Route::post('/login', 'AuthController@login');
