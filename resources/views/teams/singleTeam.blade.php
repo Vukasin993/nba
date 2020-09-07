@@ -20,4 +20,33 @@
         </ul>
         <hr />
     </div>
-    @endsection
+
+    <h3> Comments </h3>
+    @foreach($comments ?? '' as $comment)
+    <div class="alert alert-primary">
+     {{$comment->content}}
+    </div>
+    @endforeach
+    
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="alert alert-secondary"> 
+
+<form method="POST" action="/teams/teams/{{$id}}/comments">
+@csrf
+  <div class="form-group">
+    <label for="content">Comment </label>
+    <input type="text"  name="content" class="form-control" id="Comment" placeholder="Enter comment">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@endsection

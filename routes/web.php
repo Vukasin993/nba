@@ -19,6 +19,8 @@ Route::get('/teams/teams/{id}', 'TeamController@show')->name('singleTeam')->midd
 
 ROute::get('/teams/players/{id}', 'PlayerController@show')->name('singlePlayer')->middleware('auth');;
 
+Route::post('/teams/teams/{id}/comments', 'CommentsController@store');
+
 Route::get('/logout', 'AuthController@logout')->middleware('auth');
 
 Route::group(['middleware'=>['guest']], function() {
