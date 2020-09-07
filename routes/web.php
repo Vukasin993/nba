@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TeamController@index');
+
+Route::get('/teams/{id}', 'TeamController@show')->name('singleTeam');
+
+ROute::get('/players/{id}', 'PlayerController@show')->name('singlePlayer');
