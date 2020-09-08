@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Team')
+@section('title',$name)
 
 @section('content')
 <div>

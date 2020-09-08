@@ -11,14 +11,37 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand" href="/posts">NBA</a>
 
-  ss
+
+  <ul class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('register') }}">Register</a>
+                </li>
     
+            @else
+              <li class="nav-item">
+                <a class="dropdown-item" href="/logout"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  Logout
+                </a>
+                <form id="logout-form" action="/logout" method="POST" class="d-none">
+                  @csrf
+                </form>
+              </li>
+            @endguest
+          </ul>
+  
+    <!--
     <a class="nav-link" href="{{ route('login') }}">Login</a>
              
     <a href="/logout">Logout</a>
 
     <a href="/register">Register</a>
-
+-->
 
 </nav>
 
