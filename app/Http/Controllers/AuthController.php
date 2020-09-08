@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterRequest;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+use App\Http\Requests\RegisterRequest;
 use App\User;
+use App\Mail\AccountConfirmation;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -24,8 +29,9 @@ class AuthController extends Controller
             'password'=>bcrypt($data['password'])
         ]);
 
-    
-        //redirektuj negde
+      Mail::to($user)->send(new AccountConfirmation($user));
+     
+              //redirektuj negde
 
         return redirect('/teams');
     }
@@ -37,8 +43,18 @@ class AuthController extends Controller
       public function login(Request $request) {
         $credentials = [
           'email' => $request->get('email'),
-          'password' => $request->get('password')
+          'password' => $request->get('password'),
+          
         ];
+
+       /* User::where(('email', $credentials['email'])->first()->email_verified_at == null) {
+          return view('not-verified');
+        }
+        */
+        $user = User::where('email', $credentials['email'])->first();
+        if ($user->email_verified_at == null) {
+          return view('not-verified');
+        }
         if (auth()->attempt($credentials)) {
           return redirect('/teams');
         }
@@ -53,6 +69,15 @@ class AuthController extends Controller
 
         info('asdf logout');
         return redirect('/login');
+      }
+
+      public function verifyUser($id) {
+        $user = User::findOrFail($id);
+
+        $user->email_verified_at = new Carbon;
+        $user->save();
+
+        return redirect('/teams');
       }
     /**
      * Display a listing of the resource.

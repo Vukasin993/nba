@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\NoBadWords;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCommentRequest extends FormRequest
@@ -24,7 +25,7 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content'=> 'string|min:10',
+            'content'=> ['string' ,'min:10',new NoBadWords]
         ];
     }
 }

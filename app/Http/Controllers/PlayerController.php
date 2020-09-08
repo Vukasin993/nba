@@ -56,8 +56,8 @@ class PlayerController extends Controller
           'first_name' => $player->first_name,
           'last_name' => $player->last_name,
           'email' => $player->email,
-            'team' => $player->team,
-            'comments' => $team->comments
+            'team' => $player->team
+            
         ]);
     }
 
