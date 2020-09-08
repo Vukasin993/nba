@@ -40,11 +40,6 @@ class CommentsController extends Controller
     {
         $data = $request->validated();
 
-
-       // $team->createComment($data(('comment')));
-       $comments = $data;
-
-
         Comment::create([
             'content' =>$data['content'],
             'team_id' => $id,
