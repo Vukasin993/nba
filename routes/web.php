@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/teams', 'TeamController@index')->middleware('auth');;
+Route::get('/teams', 'TeamController@index')->name('all')->middleware('auth');;
 
 Route::get('/teams/teams/{id}', 'TeamController@show')->name('singleTeam')->middleware('auth');;
 

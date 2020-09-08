@@ -4,7 +4,7 @@
 
 @section('content')
 <div>
-        <h1>{{$name}}</h1>
+        <a href="{{route('all')}}"><h1>{{$name}}</h1></a>
         <p>{{$city}}</p>
         <p>{{$address}}</p>
 
@@ -22,7 +22,7 @@
     </div>
 
     <h3> Comments </h3>
-    @foreach($comments ?? '' as $comment)
+    @foreach($comments as $comment)
     <div class="alert alert-primary">
      {{$comment->content}}
     </div>

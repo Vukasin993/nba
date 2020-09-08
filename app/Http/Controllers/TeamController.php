@@ -59,6 +59,7 @@ class TeamController extends Controller
           'address' => $team->address,
           'city' => $team->city,
           'players' => $players,
+          'comments' => $team->comments
         ]);
     }
 

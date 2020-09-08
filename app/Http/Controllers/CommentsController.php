@@ -41,15 +41,17 @@ class CommentsController extends Controller
         $data = $request->validated();
 
 
-        $team->createComment($data(('comment')));
-        
-        //create comment
+       // $team->createComment($data(('comment')));
+       $comments = $data;
+
+
         Comment::create([
             'content' =>$data['content'],
             'team_id' => $id,
             'user_id' => auth()->user()->id
 
-        ]);
+        ]); 
+        
         //redirect
          return redirect('/teams/teams/'.$id);
     }
