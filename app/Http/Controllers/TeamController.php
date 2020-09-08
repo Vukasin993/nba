@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use App\Player;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+
+use App\Mail\CommentReceived;
 
 class TeamController extends Controller
 {
@@ -52,6 +56,7 @@ class TeamController extends Controller
     {
         $team = Team::findOrFail($id);
         $players = $team->players;
+
     
         return view('teams/singleTeam', [
           'id' => $team->id,

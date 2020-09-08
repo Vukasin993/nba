@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Team;
 use App\Comment;
+use App\Mail\CommentReceived;
+
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCommentRequest;
 
@@ -40,13 +43,14 @@ class CommentsController extends Controller
     {
         $data = $request->validated();
 
-        Comment::create([
+        $comment = Comment::create([
             'content' =>$data['content'],
             'team_id' => $id,
             'user_id' => auth()->user()->id
-
         ]); 
-        
+                
+        Mail::to($comment->team)->send(new CommentReceived($comment->user));
+        // Mail::to(...)->send(new CommentReceived(auth()->user()))
         //redirect
          return redirect('/teams/teams/'.$id);
     }
