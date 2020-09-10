@@ -4,13 +4,14 @@
 
 @section('content')
 
-@foreach ($news as $one)
+
+
+    @foreach ($news as $one)
     <div class="alert alert-primary">
-        
-        <p>{{$one->title}}</p>
-        <p>{{$one->content}}</p>
-        by 
-        <p>{{$one->name}}</p>
-    </div>
+        <a href="{{route('singleNews', ['id' => $one->id])}}"><p>{{$one->title}}</p></a>
+        <p>Written by {{$one->user->name}}</p>
+        </div>
     @endforeach
+
+    {{ $news->links() }};
 @endsection

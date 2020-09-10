@@ -25,6 +25,8 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth');
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
 Route::get('/news', 'NewsController@index');
+ROute::get('/news/{id}', 'NewsController@show')->name('singleNews');
+
 
 
 Route::group(['middleware'=>['guest']], function() {
