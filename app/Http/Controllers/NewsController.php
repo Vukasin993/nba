@@ -17,7 +17,7 @@ class NewsController extends Controller
         $news = News::all();
         
 
-        return view('news/', compact('news'));
+        return view('/news', compact('news'));
     }
 
     /**
