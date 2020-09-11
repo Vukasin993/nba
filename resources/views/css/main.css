@@ -1,0 +1,9 @@
+.custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body {
+    background-color: aqua;
+}
